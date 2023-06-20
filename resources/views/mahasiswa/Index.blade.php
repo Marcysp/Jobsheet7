@@ -18,17 +18,6 @@
     </div>
     @endif
 
-    <div class="my-3">
-        <form action="{{ route('mahasiswa.index') }}" method="GET">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Search by Name">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <table class="table table-bordered">
         <tr>
             <th>Nim</th>
@@ -58,13 +47,4 @@
         </tr>
         @endforeach
     </table>
-    <div class="pagination">
-        @if ($mahasiswas->currentPage() > 1)
-            <a href="{{ $mahasiswas->previousPageUrl() }}" class="btn btn-primary">Previous</a>
-        @endif
-
-        @if ($mahasiswas->hasMorePages())
-            <a href="{{ $mahasiswas->nextPageUrl() }}" class="btn btn-primary">Next</a>
-        @endif
-    </div>
 @endsection

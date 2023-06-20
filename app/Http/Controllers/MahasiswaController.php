@@ -13,14 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index(Request $request)
     {
-    $keyword = $request->get('search');
-    $query = Mahasiswa::query();
-
-    if ($keyword) {
-        $query->where('Nama', 'LIKE', "%$keyword%");
-    }
-
-    $mahasiswas = $query->paginate(5);
+    $mahasiswas = Mahasiswa::all();
 
     return view('mahasiswa.index', compact('mahasiswas'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -74,7 +67,7 @@ class MahasiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $Nim)
+    public function update(Request $request, string $Nim)
     {
         $request->validate([
             'Nim' => 'required',
@@ -82,6 +75,7 @@ class MahasiswaController extends Controller
             'Kelas' => 'required',
             'Jurusan' => 'required',
             'No_Handphone' => 'required',
+
         ]);
         Mahasiswa::find($Nim)->update($request->all());
         return redirect()->route('mahasiswa.index')
