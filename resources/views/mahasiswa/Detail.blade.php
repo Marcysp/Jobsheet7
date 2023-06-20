@@ -11,6 +11,7 @@
                     <li class="list-group-item"><b>Nama: </b>{{$Mahasiswa->Nama}}</li>
                     <li class="list-group-item"><b>Kelas: </b>{{$Mahasiswa->Kelas}}</li>
                     <li class="list-group-item"><b>Jurusan: </b>{{$Mahasiswa->Jurusan}}</li>
+                    <li class="list-group-item"><b>No_Handphone: </b>{{$Mahasiswa->No_Handphone}}</li>
                 </ul>
             </div>
             <a class="btn btn-success mt-3" href="{{ route('mahasiswa.index') }}">Kembali</a>
