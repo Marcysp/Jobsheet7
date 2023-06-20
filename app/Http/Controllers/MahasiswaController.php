@@ -13,7 +13,14 @@ class MahasiswaController extends Controller
      */
     public function index(Request $request)
     {
-    $mahasiswas = Mahasiswa::all();
+    $keyword = $request->get('search');
+    $query = Mahasiswa::query();
+
+    if ($keyword) {
+        $query->where('Nama', 'LIKE', "%$keyword%");
+    }
+
+    $mahasiswas = $query->paginate(5);
 
     return view('mahasiswa.index', compact('mahasiswas'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
@@ -38,6 +45,8 @@ class MahasiswaController extends Controller
             'Kelas' => 'required',
             'Jurusan' => 'required',
             'No_Handphone' => 'required',
+            'Email' => 'required',
+            'TTL' => 'required',
         ]);
             //fungsi eloquent untuk menambah data
             Mahasiswa::create($request->all());
@@ -75,7 +84,8 @@ class MahasiswaController extends Controller
             'Kelas' => 'required',
             'Jurusan' => 'required',
             'No_Handphone' => 'required',
-
+            'Email' => 'required',
+            'TTL' => 'required',
         ]);
         Mahasiswa::find($Nim)->update($request->all());
         return redirect()->route('mahasiswa.index')

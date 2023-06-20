@@ -18,6 +18,17 @@
     </div>
     @endif
 
+    <div class="my-3">
+        <form action="{{ route('mahasiswa.index') }}" method="GET">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search by Name">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <table class="table table-bordered">
         <tr>
             <th>Nim</th>
@@ -25,6 +36,8 @@
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
+            <th>Email</th>
+            <th>TTL</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($mahasiswas as $Mahasiswa)
@@ -34,6 +47,8 @@
             <td>{{ $Mahasiswa->Kelas }}</td>
             <td>{{ $Mahasiswa->Jurusan }}</td>
             <td>{{ $Mahasiswa->No_Handphone }}</td>
+            <td>{{ $Mahasiswa->Email }}</td>
+            <td>{{ $Mahasiswa->TTL}}</td>
             <td>
                 <form action="{{ route('mahasiswa.destroy',$Mahasiswa->Nim) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('mahasiswa.show',$Mahasiswa->Nim) }}">Show</a>
@@ -47,4 +62,13 @@
         </tr>
         @endforeach
     </table>
+    <div class="pagination">
+        @if ($mahasiswas->currentPage() > 1)
+            <a href="{{ $mahasiswas->previousPageUrl() }}" class="btn btn-primary">Previous</a>
+        @endif
+
+        @if ($mahasiswas->hasMorePages())
+            <a href="{{ $mahasiswas->nextPageUrl() }}" class="btn btn-primary">Next</a>
+        @endif
+    </div>
 @endsection

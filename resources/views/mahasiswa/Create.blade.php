@@ -39,6 +39,14 @@
                     <label for="No_Handphone">No_Handphone</label>
                     <input type="text" name="No_Handphone" class="form-control" id="No_Handphone" aria-describedby="No_Handphone" >
                 </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="text" name="Email" class="form-control" id="Email" aria-describedby="Email" >
+                </div>
+                <div class="form-group">
+                    <label for="Email">TTL</label>
+                    <input type="text" name="TTL" class="form-control" id="TTL" aria-describedby="TTL" >
+                </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('Kelas');
             $table->string('Jurusan');
             $table->string('No_Handphone');
+            $table->string('Email');
+            $table->string('TTL');
             $table->timestamps();
         });
     }
